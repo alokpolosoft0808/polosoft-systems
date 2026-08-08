@@ -6,8 +6,10 @@
 
 /*
  * Polosoft Advanced Systems — design system
- * Navy #0A2342 / Teal #007C91 / Green #2CB67D / Slate-white #F8FAFC / Ink #222222
+ * Deep Medical Blue #003B73 / Teal #007C91 / Emerald #1FA971
+ * Backgrounds: White #FFFFFF / Light Grey #F8FAFC / Light Blue Tint #F4F9FC
  */
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -24,8 +26,11 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
+  --color-tint: var(--tint);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+
+
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
@@ -56,47 +61,52 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --shadow-soft: 0 1px 2px oklch(0.22 0.06 260 / 0.04), 0 8px 24px oklch(0.22 0.06 260 / 0.06);
-  --shadow-lift: 0 2px 6px oklch(0.22 0.06 260 / 0.06), 0 24px 48px oklch(0.22 0.06 260 / 0.12);
+  --shadow-soft: 0 1px 2px oklch(0.354 0.111 253 / 0.04), 0 6px 18px oklch(0.354 0.111 253 / 0.05);
+  --shadow-lift: 0 2px 6px oklch(0.354 0.111 253 / 0.05), 0 20px 42px oklch(0.354 0.111 253 / 0.10);
 }
 
 :root {
   --radius: 0.875rem;
 
-  --background: oklch(0.985 0.003 247);
-  --foreground: oklch(0.26 0 0);
-  --surface: oklch(1 0 0);
+  /* #FFFFFF */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.28 0.012 258);
+  /* #F8FAFC */
+  --surface: oklch(0.984 0.003 248);
+  /* #F4F9FC */
+  --tint: oklch(0.979 0.007 234);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.26 0 0);
+  --card-foreground: oklch(0.28 0.012 258);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.26 0 0);
+  --popover-foreground: oklch(0.28 0.012 258);
 
-  /* #0A2342 */
-  --primary: oklch(0.253 0.058 261);
-  --primary-foreground: oklch(0.99 0.002 247);
+  /* #003B73 */
+  --primary: oklch(0.354 0.111 253.5);
+  --primary-foreground: oklch(1 0 0);
 
   /* #007C91 */
-  --secondary: oklch(0.53 0.088 213);
-  --secondary-foreground: oklch(0.99 0.002 247);
+  --secondary: oklch(0.54 0.095 215);
+  --secondary-foreground: oklch(1 0 0);
 
-  --muted: oklch(0.965 0.006 247);
-  --muted-foreground: oklch(0.52 0.02 258);
+  --muted: oklch(0.972 0.005 248);
+  --muted-foreground: oklch(0.53 0.021 256);
 
-  /* #2CB67D */
-  --accent: oklch(0.694 0.132 163);
-  --accent-foreground: oklch(0.19 0.04 261);
+  /* #1FA971 */
+  --accent: oklch(0.652 0.14 159.8);
+  --accent-foreground: oklch(1 0 0);
 
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.99 0.002 247);
-  --border: oklch(0.916 0.008 250);
-  --input: oklch(0.916 0.008 250);
-  --ring: oklch(0.53 0.088 213);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.932 0.007 250);
+  --input: oklch(0.932 0.007 250);
+  --ring: oklch(0.54 0.095 215);
 
-  --chart-1: oklch(0.253 0.058 261);
-  --chart-2: oklch(0.53 0.088 213);
-  --chart-3: oklch(0.694 0.132 163);
+  --chart-1: oklch(0.354 0.111 253.5);
+  --chart-2: oklch(0.54 0.095 215);
+  --chart-3: oklch(0.652 0.14 159.8);
   --chart-4: oklch(0.72 0.05 240);
   --chart-5: oklch(0.85 0.03 200);
+
 
   --sidebar: oklch(0.99 0.002 247);
   --sidebar-foreground: oklch(0.26 0 0);
@@ -191,5 +201,47 @@
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+
+@utility section-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in oklab, var(--color-primary) 14%, transparent),
+    transparent
+  );
+}
+
+@utility btn-ripple {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(circle at center, color-mix(in oklab, white 26%, transparent) 0%, transparent 65%);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+  }
+  &:hover::after,
+  &:focus-visible::after {
+    transform: scale(1.6);
+    opacity: 1;
+  }
+}
+
+@utility img-zoom {
+  overflow: hidden;
+  & img {
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  &:hover img {
+    transform: scale(1.05);
   }
 }
