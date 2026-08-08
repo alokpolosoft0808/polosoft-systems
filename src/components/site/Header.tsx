@@ -27,18 +27,52 @@ export function Header() {
     >
       <div className="container-page flex h-20 items-center justify-between gap-4">
         <Link to="/" className="flex min-w-0 items-center gap-3" aria-label="Polosoft Advanced Systems home">
-          <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground">
-            <svg viewBox="0 0 24 24" className="size-5" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-              <rect x="7" y="7" width="10" height="10" rx="2" />
-              <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 4l1.6 3M18 4l-1.6 3M6 20l1.6-3M18 20l-1.6-3" />
+          {/* Replaced Icon Container with Shield/PAS Monogram SVG */}
+          <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground shadow-sm">
+            <svg
+              viewBox="0 0 32 32"
+              className="size-7"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              {/* Outer Shield Outline */}
+              <path
+                d="M16 3L6 7v8c0 6.5 4.3 12.3 10 14 5.7-1.7 10-7.5 10-14V7L16 3z"
+                strokeWidth="1.8"
+                className="opacity-40"
+              />
+              {/* Central Integrated A / Arrow */}
+              <path
+                d="M16 7l6 12h-4l-2-4h-0.2L16 7z"
+                fill="currentColor"
+                className="opacity-90"
+              />
+              {/* Dynamic Circuit S-Curve Line */}
+              <path
+                d="M10 21c2 0 4-2 6-2s4 2 6 2"
+                strokeWidth="2"
+              />
+              {/* Left P Anchor Line */}
+              <path
+                d="M10 11h3a2.5 2.5 0 0 1 0 5h-3v5"
+                strokeWidth="2"
+              />
+              {/* Circuit Nodes */}
+              <circle cx="22" cy="21" r="1.2" fill="currentColor" />
+              <circle cx="16" cy="7" r="1.2" fill="currentColor" />
             </svg>
           </span>
+
           <span className="min-w-0">
             <span className="block truncate font-display text-[15px] font-extrabold leading-tight text-primary">
               Polosoft Advanced Systems
             </span>
-            <span className="hidden text-[11px] uppercase tracking-[0.18em] text-secondary sm:block">
-              Engineering &amp; Electronics
+            {/* Updated Tagline echoing Sister Concern relationship */}
+            <span className="hidden text-[10px] font-semibold uppercase tracking-[0.15em] text-secondary sm:block">
+              A Division of Polosoft Technologies
             </span>
           </span>
         </Link>
