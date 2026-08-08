@@ -79,17 +79,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Polosoft Advanced Systems | Engineering Intelligent Electronics" },
+      {
+        title:
+          "Polosoft Advanced Systems | Healthcare Devices | PCB Design | Embedded Engineering",
+      },
       {
         name: "description",
         content:
-          "Engineering intelligent electronics for a smarter future — PCB design, medical electronics, embedded systems and product development.",
+          "Polosoft Advanced Systems delivers healthcare device engineering, PCB design, PCB manufacturing, embedded systems and product engineering services from Hyderabad and Bhubaneswar.",
       },
       { name: "author", content: "Polosoft Advanced Systems Private Limited" },
       { property: "og:site_name", content: "Polosoft Advanced Systems" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "theme-color", content: "#0A2342" },
+      { name: "theme-color", content: "#003B73" },
+
     ],
     links: [
       { rel: "stylesheet", href: appCss },

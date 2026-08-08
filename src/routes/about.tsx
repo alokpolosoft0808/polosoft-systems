@@ -1,12 +1,12 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import {
-  ArrowRight,
   Building2,
   Compass,
   CircuitBoard,
   Cpu,
   Factory,
-  MapPin,
+  HeartPulse,
+  Rocket,
   ShieldCheck,
   Target,
   TestTube2,
@@ -16,10 +16,12 @@ import engineersLab from "@/assets/engineers-lab.jpg";
 import medicalDevice from "@/assets/medical-electronics.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import { Offices } from "@/components/site/Offices";
 
-const TITLE = "About Polosoft Advanced Systems | Engineering Company in India";
+const TITLE = "About Polosoft Advanced Systems | Healthcare Electronics & Engineering";
 const DESCRIPTION =
-  "Polosoft Advanced Systems is a sister concern of Polosoft Technologies Pvt. Ltd., delivering medical electronics, PCB and embedded engineering from Hyderabad and Bhubaneswar.";
+  "Polosoft Advanced Systems is the dedicated engineering and healthcare electronics company within the Polosoft Group — medical electronics, PCB design, embedded engineering and product development.";
+
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -40,11 +42,14 @@ export const Route = createFileRoute("/about")({
 });
 
 const capabilities = [
-  { icon: CircuitBoard, title: "PCB Engineering", body: "Multilayer, high-speed and mixed-signal board design with integrity analysis and DFM release packages." },
+  { icon: HeartPulse, title: "Medical Electronics", body: "Patient-safe sensing, isolation strategy and regulated documentation practice for healthcare devices." },
+  { icon: CircuitBoard, title: "PCB Design", body: "Multilayer, high-speed and mixed-signal board design with integrity analysis and DFM release packages." },
   { icon: Cpu, title: "Embedded Engineering", body: "Bare-metal and RTOS firmware, driver development, connectivity stacks and low-power architecture." },
-  { icon: TestTube2, title: "Verification & Test", body: "Test plan definition, bring-up automation, environmental and pre-compliance validation." },
+  { icon: Rocket, title: "Electronic Product Development", body: "Concept to production ownership with prototyping, industrialisation and lifecycle engineering." },
+  { icon: TestTube2, title: "Engineering Services", body: "Design review, test strategy, verification and pre-compliance validation for in-house teams." },
   { icon: Factory, title: "Manufacturing Enablement", body: "Prototype builds, assembly coordination, sourcing strategy and production transfer." },
 ];
+
 
 const trust = [
   "Engineering ownership with named technical leads on every program",
@@ -64,35 +69,36 @@ const philosophy = [
 function AboutPage() {
   return (
     <>
-      <section className="border-b border-border bg-surface">
+      <section className="bg-tint">
         <div className="container-page py-20 lg:py-28">
           <Reveal>
             <p className="eyebrow">About Us</p>
             <h1 className="mt-4 max-w-4xl text-4xl font-extrabold leading-[1.1] sm:text-5xl">
-              An engineering company built for regulated, high-reliability electronics
+              The engineering and healthcare electronics company of the Polosoft Group
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Polosoft Advanced Systems Private Limited designs and industrializes electronic products —
-              from healthcare devices and medical electronics to PCB design, PCB manufacturing support,
-              embedded systems and complete product development.
+              Polosoft Advanced Systems Private Limited designs and industrialises electronic products —
+              from medical electronics and healthcare devices to PCB design, PCB manufacturing support,
+              embedded engineering and complete electronic product development.
             </p>
           </Reveal>
         </div>
       </section>
 
       {/* OVERVIEW + GROUP */}
-      <section className="container-page py-24">
-        <div className="grid items-start gap-14 lg:grid-cols-2">
+      <section className="container-page py-24 lg:py-28">
+        <div className="grid items-center gap-16 lg:grid-cols-2">
           <Reveal>
-            <div className="rounded-3xl border border-border bg-card p-8 shadow-soft sm:p-10">
-              <span className="grid size-12 place-items-center rounded-xl bg-secondary/10 text-secondary">
-                <Building2 className="size-6" aria-hidden="true" />
+            <div className="rounded-2xl bg-card p-8 shadow-soft sm:p-10">
+              <span className="grid size-12 place-items-center rounded-xl bg-primary/6 text-primary">
+                <Building2 className="size-6" strokeWidth={1.5} aria-hidden="true" />
               </span>
-              <h2 className="mt-6 text-2xl font-bold">Part of the Polosoft group</h2>
+              <h2 className="mt-6 text-2xl font-bold">Part of the Polosoft Group</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                As a sister concern of Polosoft Technologies Pvt. Ltd., we operate with the governance,
+                Polosoft Advanced Systems Pvt. Ltd. is the dedicated engineering and healthcare
+                electronics company within the Polosoft Group. We operate with the governance,
                 delivery process and client management maturity of an established technology group,
-                while remaining a focused hardware engineering organization.
+                while remaining a focused hardware engineering organisation.
               </p>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 That relationship gives customers access to combined hardware, firmware, cloud and
@@ -101,17 +107,20 @@ function AboutPage() {
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <img
-              src={engineersLab}
-              alt="Engineers collaborating on electronic hardware design in a laboratory"
-              width={1280}
-              height={960}
-              loading="lazy"
-              className="w-full rounded-3xl object-cover shadow-lift"
-            />
+            <div className="img-zoom rounded-2xl shadow-lift">
+              <img
+                src={engineersLab}
+                alt="Engineers collaborating on electronic hardware design in a laboratory"
+                width={1280}
+                height={960}
+                loading="lazy"
+                className="w-full rounded-2xl object-cover"
+              />
+            </div>
           </Reveal>
         </div>
       </section>
+
 
       {/* MISSION / VISION */}
       <section className="bg-surface py-24">
@@ -215,43 +224,8 @@ function AboutPage() {
       </section>
 
       {/* LOCATIONS */}
-      <section className="bg-surface py-24">
-        <div className="container-page">
-          <SectionHeading eyebrow="Locations" title="Two delivery centers in India" />
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {[
-              { city: "Hyderabad", region: "Telangana, India", body: "Product engineering, embedded development and manufacturing coordination." },
-              { city: "Bhubaneswar", region: "Odisha, India", body: "PCB design, verification engineering and sustaining support." },
-            ].map((loc, i) => (
-              <Reveal key={loc.city} delay={i * 0.1}>
-                <div className="card-lift h-full rounded-3xl border border-border bg-card p-8 shadow-soft">
-                  <span className="grid size-12 place-items-center rounded-xl bg-accent/12">
-                    <MapPin className="size-5 text-secondary" aria-hidden="true" />
-                  </span>
-                  <h3 className="mt-6 text-2xl font-bold">{loc.city}</h3>
-                  <p className="mt-1 text-sm font-medium text-secondary">{loc.region}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{loc.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={0.15}>
-            <div className="mt-12 flex flex-wrap items-center justify-between gap-6 rounded-3xl bg-primary p-10">
-              <p className="max-w-xl font-display text-xl font-bold text-primary-foreground">
-                Considering an engineering partner for your next electronic product?
-              </p>
-              <Link
-                to="/"
-                hash="contact"
-                className="group inline-flex min-h-12 items-center gap-2 rounded-full bg-accent px-7 text-sm font-semibold text-accent-foreground"
-              >
-                Talk to Our Experts
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <Offices />
+
     </>
   );
 }
